@@ -1,0 +1,23 @@
+<%= simple_form_for(@cocktail) do |f| %>
+  <% if @cocktail.errors.any? %>
+    <div class="errors-container">
+      <ul>
+        <% @cocktail.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.simple_fields_for @dose do |d| %>
+    <%= d.text_field :description %>
+    <% end %>
+  <%= f.simple_fields_for @ingredient do |i| %>
+    <%= i.label "new ingredient ?" %>
+    <%= i.text_field :name %>
+  <% end %>
+  <%= f.association :ingredients, as: :radio_buttons %>
+  <%= f.submit %>
+<% end %>

@@ -1,0 +1,4 @@
+<%= form_for([@cocktail, @dose]) do |f| %>
+<%= f.association :ingredients %>
+<%= f.submit %>
+<% end %>

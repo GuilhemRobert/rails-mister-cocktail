@@ -5,4 +5,5 @@ class Dose < ApplicationRecord
   validates :cocktail, presence: true
   validates :ingredient, presence: true
   validates :cocktail, uniqueness: {scope: :ingredient}
+  accepts_nested_attributes_for :cocktail, :ingredient
 end
